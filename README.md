@@ -87,3 +87,10 @@ Contributions to the CIT 360 project are welcome! If you have any improvements o
 
 This project is licensed under the [MIT License](LICENSE).
 ```
+# Authors
+Mohit Prajapat
+Youtube - https://www.youtube.com/@itsmohitprajapat
+Instagram - https://www.instagram.com/itsmohit.codes/
+LinkedIN - https://www.linkedin.com/in/itsmohitprajapat/
+```
+
