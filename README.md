@@ -1,6 +1,3 @@
-Apologies for the oversight. Here's the revised version of the `README.md` file that includes your name as the creator:
-
-```markdown
 # CIT 360 - Full Stack Website Project
 
 Welcome to the CIT 360 project repository! This repository contains the source code and project documentation for a Full Stack website developed by Mohit Prajapat. The project was built using Python, Django Web Framework, HTML, CSS, JavaScript, jQuery, Bootstrap, and Git Version Control System.
