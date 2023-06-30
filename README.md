@@ -1,13 +1,13 @@
+Apologies for the oversight. Here's the revised version of the `README.md` file that includes your name as the creator:
+
+```markdown
 # CIT 360 - Full Stack Website Project
-Welcome to the CIT 360 project repository! 
-This repository contains the source code and project documentation for a Full Stack website developed using 
-Python, Django Web Framework, HTML, CSS, JavaScript, jQuery, Bootstrap, and Git Version Control System.
+
+Welcome to the CIT 360 project repository! This repository contains the source code and project documentation for a Full Stack website developed by Mohit Prajapat. The project was built using Python, Django Web Framework, HTML, CSS, JavaScript, jQuery, Bootstrap, and Git Version Control System.
 
 ## Project Overview
 
-CIT 360 is a Full Stack website project aimed at providing a centralized platform for students and teachers to access 
-academic resources, communicate with each other, and share information. The website includes features like UI/UX Designing, 
-Website Admin Panel, Separate Student and Teachers Login, Certificate Downloads, and Suggestion Tabs for Internships and Updates.
+CIT 360 is a Full Stack website project aimed at providing a centralized platform for students and teachers to access academic resources, communicate with each other, and share information. The website includes features like UI/UX Designing, Website Admin Panel, Separate Student and Teachers Login, Certificate Downloads, Campaign app, Chat Bot, and Suggestion Tabs for Internships and Updates.
 
 ## Getting Started
 
@@ -28,22 +28,27 @@ Before you begin, ensure that you have the following prerequisites installed on 
 
 ```shell
 git clone https://github.com/mohitprajapat2001/Full-Stack-Website-CIT-360
-Navigate to the project directory:
+```
 
-shell
+2. Navigate to the project directory:
+
+```shell
 cd cit-360-project
+```
 
-Install the project dependencies:
-shell
+3. Install the project dependencies:
+
+```shell
 pip install -r requirements.txt
-Create a PostgreSQL database for the project.
+```
 
-Configure the database settings:
+4. Create a PostgreSQL database for the project.
 
-Open the settings.py file located in the cit360 directory.
-Update the DATABASES configuration with your PostgreSQL database details.
-python
-Copy code
+5. Configure the database settings:
+   - Open the `settings.py` file located in the `cit360` directory.
+   - Update the `DATABASES` configuration with your PostgreSQL database details.
+
+```python
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
@@ -54,23 +59,34 @@ DATABASES = {
         'PORT': '5432',
     }
 }
-Apply database migrations:
-shell
+```
+
+6. Apply database migrations:
+
+```shell
 python manage.py migrate
-Usage
+```
+
+## Usage
+
 To run the project locally, execute the following command:
 
-shell
+```shell
 python manage.py runserver
-The website will be accessible at http://localhost:8000 in your web browser.
+```
 
-Contributing
+The website will be accessible at `http://localhost:8000` in your web browser.
+
+## Contributing
+
 Contributions to the CIT 360 project are welcome! If you have any improvements or new features to propose, please follow these steps:
 
-Fork the repository.
-Create a new branch for your feature/bug fix.
-Commit your changes and push the branch to your forked repository.
-Submit a pull request detailing your changes.
+1. Fork the repository.
+2. Create a new branch for your feature/bug fix.
+3. Commit your changes and push the branch to your forked repository.
+4. Submit a pull request detailing your changes.
 
-License
-This project is licensed under the MIT License.
+## License
+
+This project is licensed under the [MIT License](LICENSE).
+```
