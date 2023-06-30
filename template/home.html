@@ -1,0 +1,80 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block style %}
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.css" />
+<link rel="stylesheet" href='{% static "style/owl.css" %}'>
+<link rel="stylesheet" href='{% static "style/endinglogo.css" %}'>
+<link rel="stylesheet" href='{% static "style/welcome.css" %}'>
+{% include 'element/static.html' %}
+{% endblock %}
+
+
+{% block content %}
+
+<!-- ***** Carosuel Area Start ***** -->
+{% include 'element/carosuel.html' %}
+{% block carosuel %}{% endblock %}
+<!-- ***** Carosuel Area End ***** -->
+
+<!-- ***** Services Area Start ***** -->
+{% include 'element/services.html' %}
+{% block services %}{% endblock %}
+<!-- ***** Services Area End ***** -->
+
+<!-- ***** Section About us Area Start ***** -->
+{% include 'element/about.html' %}
+{% block about %}{% endblock %}
+<!-- ***** Section About us Area End ***** -->
+
+<!-- ***** Section internship Area Start ***** -->
+{% include 'element/internship.html' %}
+{% block internship %}{% endblock %}
+<!-- ***** Section internship Area End ***** -->
+
+<!-- ***** Fun Fact Area Start ***** -->
+{% include 'element/funfact.html' %}
+{% block funfact %}{% endblock %}
+<!-- ***** Fun Fact Area End ***** -->
+
+<!-- ***** College Glance Area Start ***** -->
+{% include 'element/college glance.html' %}
+{% block college-glance %}{% endblock %}
+<!-- ***** College Glance Area End ***** -->
+
+<!-- ***** Team Area Start ***** -->
+{% include 'element/team.html' %}
+{% block team %}{% endblock %}
+<!-- ***** Team Area End ***** -->
+
+<!-- ***** testimonial Area Start ***** -->
+{% include 'element/testimonial.html' %}
+{% block testimonial %}{% endblock %}
+<!-- ***** testimonial Area End ***** -->
+
+<!-- ***** seminar Area Start ***** -->
+{% include 'element/seminar.html' %}
+{% block seminar %}{% endblock %}
+<!-- ***** seminar Area End ***** -->
+
+<!-- ***** imagegallery Area Start ***** -->
+{% include 'element/imagegallery.html' %}
+{% block imagegallery %}{% endblock %}
+<!-- ***** imagegallery Area End ***** -->
+
+<!-- ***** endinglogo Area Start ***** -->
+{% include 'element/endinglogo.html' %}
+{% block ending-logo %}{% endblock %}
+<!-- ***** endinglogo Area End ***** -->
+
+{% endblock %}
+
+{% block js %}
+<script src="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.6.0/slick.js"></script>
+<script src="{% static 'js/owl-carousel.js' %}"></script>
+<script src="{% static 'js/counter.js' %}"></script>
+<script src="{% static 'js/custom.js' %}"></script>
+<script src="{% static 'js/about.js' %}"></script>
+<script src="{% static 'js/endinglogo.js' %}"></script>
+
+{% endblock %}

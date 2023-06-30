@@ -1,0 +1,224 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block style %}
+<link rel="stylesheet" href="{% static 'style/gallerybase.css' %}">
+<link rel="stylesheet" href="{% static 'style/about.css' %}">
+{% endblock %}
+{% block title %}Gallery{% endblock %}
+{% block content %}
+<div class="section aboutus">
+  <div class="container mt-5">
+    <div class="row">
+      <div class="col-lg-12 col-md-12 text-center">
+        <div class="section-heading">
+          <h6>CIT Gallery</h6>
+          <h2>Life at CIT</h2>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="container-xl p-3">
+  <div class="row">
+    <div class="col-lg-4">
+      <div class="accordion" id="accordionExample">
+        <div class="accordion-item">
+          <h2 class="accordion-header text-center" id="headingOne">
+            <button class="accordion-button border-0 bg-transparent" type="button" data-bs-toggle="collapse"
+              data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+              Important Notice
+            </button>
+          </h2>
+          <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne"
+            data-bs-parent="#accordionExample">
+            <div class="accordion-body scroll-accordion">
+              <!-- ----------- -->
+              <div class="container scroll-accordion-container-notice">
+                <ul>
+                  {% for i in importantNotice_data %}
+                  {% if i.show %}
+                  <li>
+                    <h5><code><a href="{{i.href}}">{{i.title}}</a></code></h5>
+                  </li>
+                  {% endif %}
+                  {% endfor %}
+                </ul>
+              </div>
+              <!-- ------------ -->
+            </div>
+          </div>
+        </div>
+        <div class="accordion-item">
+          <h2 class="accordion-header text-center" id="headingTwo">
+            <button class="accordion-button collapsed border-0 bg-transparent" type="button" data-bs-toggle="collapse"
+              data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+              Top News
+            </button>
+          </h2>
+          <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo"
+            data-bs-parent="#accordionExample">
+            <div class="accordion-body scroll-accordion">
+              <!-- Top News -->
+              <div class="container scroll-accordion-container-news">
+                <ul>
+                  {% for i in topNews_data %}
+                  {% if i.show %}
+                  <li>
+                    <h5><code><a href="{{i.href}}">{{i.title}}</a></code></h5>
+                  </li>
+                  {% endif %}
+                  {% endfor %}
+                </ul>
+              </div>
+              <!--  -->
+            </div>
+          </div>
+        </div>
+        <div class="accordion-item">
+          <h2 class="accordion-header text-center" id="headingThree">
+            <button class="accordion-button collapsed border-0 bg-transparent" type="button" data-bs-toggle="collapse"
+              data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+              CIT in Media
+            </button>
+          </h2>
+          <div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="headingThree"
+            data-bs-parent="#accordionExample">
+            <div class="accordion-body scroll-accordion">
+              <div class="container scroll-accordion-container-cit">
+                <ul>
+                  {% for i in citinMedia_data %}
+                  {% if i.show %}
+                  <li>
+                    <h5><code><a href="{{i.href}}">{{i.title}}</a></code></h5>
+                  </li>
+                  {% endif %}
+                  {% endfor %}
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="accordion-item">
+          <h2 class="accordion-header text-center" id="headingFour">
+            <button class="accordion-button collapsed border-0 bg-transparent" type="button" data-bs-toggle="collapse"
+              data-bs-target="#collapseFour" aria-expanded="false" aria-controls="collapseFour">
+              What We Offer?
+            </button>
+          </h2>
+          <div id="collapseFour" class="accordion-collapse collapse" aria-labelledby="headingFour"
+            data-bs-parent="#accordionExample">
+            <div class="accordion-body">
+              Our college offers <code>engineering courses, extensive sports facilities</code> and maintains a strict
+              <code>no ragging policy</code> to provide a holistic and safe learning environment.
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-lg-8 my-5">
+      <div class="container">
+        <h4 class="mb-3 border-bottom border-success text-bold">
+          {% if category == 'citcampus' %}Campus Life{% endif %}
+          {% if category == 'labs' %}Hi-Tech Labs{% endif %}
+          {% if category == 'hostel' %}Hostel Facilities{% endif %}
+          {% if category == 'workshop' %}Workshops & Seminars{% endif %}
+          {% if category == 'tarunya' %}Tech Event Tarunya{% endif %}
+          {% if category == 'lakshya' %}Sports Events: Lakshya{% endif %}
+
+        </h4>
+        <p class="text-monospace">
+          {% if category == 'citcampus' %}The CIT College campus is not just a place to learn, but a place where you can
+          grow to make a
+          difference. You will find a confidence to try new things. It is one of the most beautiful colleges in the
+          sirohi district. There are various student activities available for enrichment and enjoyment. You can
+          find informal gathering, sports activities, kite flying, etc. across the main garden. Campus is one
+          place in student’s life where he/she gets full freedom to prepare his own path to success and lead a
+          much confidant life ahead. Campus life is crucial to bridging the gap between what we teach in the
+          curriculum and what students need to succeed.{% endif %}
+
+          {% if category == 'labs' %}Our college is equipped with state-of-the-art laboratories that provide practical
+          learning experiences for students. These labs are designed to enhance hands-on skills and provide a real-world
+          understanding of concepts taught in classrooms. From well-equipped computer labs to advanced science and
+          engineering labs, we offer a wide range of facilities to support various disciplines. Our dedicated lab
+          instructors and technicians ensure a safe and conducive environment for conducting experiments and research.
+          Students have the opportunity to explore, innovate, and apply their knowledge in these labs, fostering a
+          practical approach to learning and preparing them for future careers.{% endif %}
+
+          {% if category == 'hostel' %}Our college is equipped with state-of-the-art laboratories that provide practical
+          learning experiences for students. These labs are designed to enhance hands-on skills and provide a real-world
+          understanding of concepts taught in classrooms. From well-equipped computer labs to advanced science and
+          engineering labs, we offer a wide range of facilities to support various disciplines. Our dedicated lab
+          instructors and technicians ensure a safe and conducive environment for conducting experiments and research.
+          Students have the opportunity to explore, innovate, and apply their knowledge in these labs, fostering a
+          practical approach to learning and preparing them for future careers.{% endif %}
+
+          {% if category == 'workshop' %}We organize various workshops to enhance practical skills and knowledge. From
+          technical workshops in engineering to creative workshops in arts and design, students have the opportunity to
+          learn from industry experts. These workshops provide hands-on experience, foster innovation, and prepare
+          students for real-world challenges. It's a platform to explore new interests, gain valuable insights, and
+          develop practical expertise.{% endif %}
+
+          {% if category == 'tarunya' %}TARUNYA is the annual collegiate techno cultural festival, organized by
+          Chartered Institute of Technology. It remains one of the most popular college fests conducted annually. This
+          event is a platform that brings students of various branches together and gives them an opportunity to
+          interact with each other and showcase their talent while kindling a spirit of healthy and friendly
+          competition. A wide range of events including cultural competitions are planned and conducted by our college.
+          This festival means fun for everyone with music, food, and entertainment.
+
+          This event is celebrated annually having participation from more than 15 teams under various techno cultural
+          events. To make this event a team building platform, events are organized in group and solo participation from
+          team members. At the end of event one team is announced winner every year. Team extrema, technomates, iconics,
+          nut and bolts are to be name a few who are holding legacy and carry on their team every year with freshies.
+
+          Tarunya held various events like Solo dance competition, Duo dance competition, Street play competition, Solo
+          song competition, Wall painting competition, Short film making competition, Speech competition, Treasure
+          Hunting, Ad Man show.{% endif %}
+
+          {% if category == 'lakshya' %}Lakshya is our annual sports event that showcases the spirit of healthy
+          competition and sportsmanship. It features a wide range of games and tournaments, including volleyball,
+          kabaddi, Kho-Kho, basket throw, box cricket, table tennis, badminton, carom, chess, futsal, slow cycling, and
+          tug of war. The event attracts enthusiastic participants from across the college, fostering a sense of
+          camaraderie and teamwork.
+
+          In addition to the regular sports events, we also host the prestigious Gyan Raman Memorial Cup and a thrilling
+          kabaddi tournament. These tournaments bring together talented athletes and provide a platform for showcasing
+          their skills. Bold and exciting moments unfold as players strive for victory, creating an electrifying
+          atmosphere.
+
+          Join us during Lakshya and witness the passion, dedication, and adrenaline-fueled excitement as athletes
+          compete for glory.{% endif %}
+        </p>
+
+        <div class="gallery my-5 event_outer row">
+          {% for i in category_data %}
+          {% if i.category == category %}
+          <img src="{{i.images.url}}" class="gallery-img rounded" alt="Image 2">
+          {% endif %}
+          {% endfor %}
+        </div>
+        <div class="modal fade" id="myModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+          <div class="modal-dialog modal-dialog-centered modal-lg">
+            <div class="modal-content">
+              <div class="modal-body">
+                <img id="modalImg" src="" alt="Modal Image">
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-primary" id="prevBtn">Previous</button>
+                <button type="button" class="btn btn-primary" id="nextBtn">Next</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+</div>
+{% endblock %}
+
+{% block js %}
+<script src="{% static 'js/accounts.js' %}"></script>
+<script src="{% static 'js/about.js' %}"></script>
+<script src="{% static 'js/gallerybase.js' %}"></script>
+{% endblock %}

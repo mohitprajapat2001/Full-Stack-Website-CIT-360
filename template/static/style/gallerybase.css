@@ -1,0 +1,27 @@
+.gallery {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 10px;
+    background-color: transparent;
+  }
+  
+  .gallery-img {
+    width: 100%;
+    max-width: 300px;
+    height: auto;
+    transition: transform 0.3s ease;
+  }
+  
+  .gallery-img:hover {
+    transform: scale(1.1);
+    z-index: 1;
+  }
+  .unblur {
+    filter: blur(0);
+  }
+  
+  .blur {
+    filter: blur(5px);
+  }
+  

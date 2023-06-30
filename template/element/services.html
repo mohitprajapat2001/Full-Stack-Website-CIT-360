@@ -1,0 +1,53 @@
+{% block services %}
+{% load static %}
+<div class="services section" id="services">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-4 col-md-6">
+        <div class="service-item">
+          <div class="icon">
+            <img src="{% static 'img/service-01.png' %}" alt="online degrees">
+          </div>
+          <div class="main-content">
+            <h4>Workshops Seminars</h4>
+            <p>Join our Workshops & Seminars to enhance your skills and knowledge.</p>
+            <div class="main-button">
+              <a href="#events">Read More</a>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-4 col-md-6">
+        <div class="service-item">
+          <div class="icon">
+            <img src="{% static 'img/service-02.png' %}" alt="short courses">
+          </div>
+          <div class="main-content">
+            <h4>Regular Classes</h4>
+            <p>Join our regular classes and get access to comprehensive learning materials and expert guidance.</p>
+            <div class="main-button">
+              <a href="#courses">Read More</a>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-4 col-md-6">
+        <div class="service-item">
+          <div class="icon">
+            <img src="{% static 'img/service-03.png' %}" alt="web experts">
+          </div>
+          <div class="main-content">
+            <h4>Certified Teachers</h4>
+            <p>Meet our team of knowledgeable and dedicated faculty members who are committed to providing quality
+              education.</p>
+            <div class="main-button">
+              <a href="#team">Read More</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+{% endblock %}

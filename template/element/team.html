@@ -1,0 +1,73 @@
+{% block team %}
+{% load static %}
+<section id="team" class="pb-5">
+    <div class="section-heading text-center" id="faculty">
+        <h6>Faculty</h6>
+        <h2>Meet Our Teachers</h2>
+    </div>
+    <!-- Page Content -->
+    <div class="container mt-5">
+        <div class="row owl-carousel">
+            {% for faculty in faculty_data %}
+            {% if faculty.show and faculty.images %}
+            <!-- Start -->
+            <div class="card rounded card-team">
+                <div class="image-flip">
+                    <div class="mainflip flip-0">
+                        <div class="frontside">
+                            <div class="card rounded p-3">
+                                <div class="card-body text-center">
+                                    <p><img class=" img-fluid" src="{{faculty.images.url}}" alt="card image"></p>
+                                    <h4 class="card-title mt-3">{{faculty.name}}</h4>
+                                    <p class="card-text">{{faculty.title}}.</p>
+                                    <a href="{{faculty.link_facebook}}" class="btn btn-primary btn-sm mt-3"><i
+                                            class="fa bi-phone-flip"></i></a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="backside">
+                            <div class="card rounded p-3">
+                                <div class="card-body text-center mt-4">
+                                    <h4 class="card-title">{{faculty.name}}</h4>
+                                    <p class="card-title">{{faculty.title}}</>
+                                    <p class="card-text p-3">{{faculty.about}}</p>
+                                    <ul class="list-inline">
+                                        <li class="list-inline-item">
+                                            <a class="social-icon text-xs-center" target="_blank"
+                                                href="{{faculty.link_facebook}}">
+                                                <i class="bi bi-facebook"></i>
+                                            </a>
+                                        </li>
+                                        <li class="list-inline-item">
+                                            <a class="social-icon text-xs-center" target="_blank"
+                                                href="{{faculty.link_twitter}}">
+                                                <i class="bi bi-twitter"></i>
+                                            </a>
+                                        </li>
+                                        <li class="list-inline-item">
+                                            <a class="social-icon text-xs-center" target="_blank"
+                                                href="{{faculty.link_skype}}">
+                                                <i class="bi bi-skype"></i>
+                                            </a>
+                                        </li>
+                                        <li class="list-inline-item">
+                                            <a class="social-icon text-xs-center" target="_blank"
+                                                href="{{faculty.link_linkdein}}">
+                                                <i class="fa-brands fa-linkedin"></i>
+                                            </a>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- end -->
+            {% endif %}
+            {% endfor %}
+        </div>
+    </div>
+</section>
+<!-- Team -->
+{% endblock %}

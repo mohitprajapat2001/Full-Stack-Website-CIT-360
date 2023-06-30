@@ -1,0 +1,128 @@
+{% block about %}
+{% load static %}
+<div class="section about-us" id="about">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-6">
+        <div class="accordion" id="accordionExample">
+          <div class="accordion-item">
+            <h2 class="accordion-header" id="headingOne">
+              <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne"
+                aria-expanded="true" aria-controls="collapseOne">
+                Important Notice
+              </button>
+            </h2>
+            <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne"
+              data-bs-parent="#accordionExample">
+              <div class="accordion-body scroll-accordion">
+                <!-- ----------- -->
+                <div class="container scroll-accordion-container-notice">
+                  <ul>
+                    {% for i in importantNotice_data %}
+                    {% if i.show %}
+                    <li>
+                      <h5><code><a href="{{i.href}}">{{i.title}}</a></code></h5>
+                    </li>
+                    {% endif %}
+                    {% endfor %}
+                  </ul>
+                </div>
+                <!-- ------------ -->
+              </div>
+            </div>
+          </div>
+          <div class="accordion-item">
+            <h2 class="accordion-header" id="headingTwo">
+              <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                Top News
+              </button>
+            </h2>
+            <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo"
+              data-bs-parent="#accordionExample">
+              <div class="accordion-body scroll-accordion">
+                <!-- Top News -->
+                <div class="container scroll-accordion-container-news">
+                  <ul>
+                    {% for i in topNews_data %}
+                    {% if i.show %}
+                    <li>
+                      <h5><code><a href="{{i.href}}">{{i.title}}</a></code></h5>
+                    </li>
+                    {% endif %}
+                    {% endfor %}
+                  </ul>
+                </div>
+                <!--  -->
+              </div>
+            </div>
+          </div>
+          <div class="accordion-item">
+            <h2 class="accordion-header" id="headingThree">
+              <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                CIT in Media
+              </button>
+            </h2>
+            <div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="headingThree"
+              data-bs-parent="#accordionExample">
+              <div class="accordion-body scroll-accordion">
+                <div class="container scroll-accordion-container-cit">
+                  <ul>
+                    {% for i in citinMedia_data %}
+                    {% if i.show %}
+                    <li>
+                      <h5><code><a href="{{i.href}}">{{i.title}}</a></code></h5>
+                    </li>
+                    {% endif %}
+                    {% endfor %}
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="accordion-item">
+            <h2 class="accordion-header" id="headingFour">
+              <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                data-bs-target="#collapseFour" aria-expanded="false" aria-controls="collapseFour">
+                What We Offer?
+              </button>
+            </h2>
+            <div id="collapseFour" class="accordion-collapse collapse" aria-labelledby="headingFour"
+              data-bs-parent="#accordionExample">
+              <div class="accordion-body">
+                Our college offers <code>engineering courses, extensive sports facilities</code> and maintains a strict
+                <code>no ragging policy</code> to provide a holistic and safe learning environment.
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-6 pb-5">
+        <div class="section-heading">
+          <div class="latest-event-title text-center p-3 mt-5 mb-3">
+            <h3 id="h3" class="title mb-0">LATEST EVENTS</h3>
+            <div id="carouselExampleIndicators" class="carousel slide carousel-fade" data-ride="carousel">
+              <ol class="carousel-indicators">
+                {% for i in eventsimages_data %}
+                <li data-target="#carouselExampleIndicators" style="width: 10px;
+                height: 10px;
+                border-radius: 100%;" {% if forloop.first %} class="active" {% endif %}></li>
+                {% endfor %}
+              </ol>
+              <div class="carousel-inner mt-4">
+                {% for i in eventsimages_data %}
+                <div class="carousel-item {% if forloop.first %}active{% endif %}">
+                  <img src="{{i.eventimage.url}}" class="d-block w-100 " data-interval="2000" style="height: 50vh;
+                    background-size: cover; background-image: url({{i.images.url}})">
+                </div>
+                {% endfor %}
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}

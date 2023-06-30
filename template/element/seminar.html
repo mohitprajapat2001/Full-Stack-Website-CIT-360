@@ -1,0 +1,59 @@
+{% block events %}
+{% load static %}
+<div class="section events" id="events">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-12 text-center">
+        <div class="section-heading">
+          <h6>Schedule</h6>
+          <h2>Upcoming Seminar</h2>
+        </div>
+      </div>
+      {% for i in seminar_data|slice:":9" %}
+      {% if i.show %}
+      <!-- seminar start -->
+      <div class="col-lg-12 col-md-6">
+        <div class="item">
+          <div class="row">
+            <div class="col-lg-3">
+              <div class="image">
+                <img src="{{i.seminarimage.url}}" alt="" height="200px">
+              </div>
+            </div>
+            <div class="col-lg-9">
+              <ul>
+                <li>
+                  <span class="category">{{i.seminar_tag}}</span>
+                  <h4>{{i.seminartitle}}</h4>
+                </li>
+                <li>
+                  <span>Date:</span>
+                  <h6>{{i.seminardate}}</h6>
+                </li>
+                <li>
+                  <span>Duration:</span>
+                  <h6>{{i.duration}} Hours</h6>
+                </li>
+                <li>
+                  <span>Price:</span>
+                  <h6>${{i.seminarprice}}</h6>
+                </li>
+              </ul>
+              <a href="{{i.seminar_url}}"><i class="fa fa-angle-right"></i></a>
+            </div>
+          </div>
+        </div>
+      </div>
+      {% endif %}
+
+      <!-- seminar end -->
+      {% empty %}
+      {% include 'element/404.html' %}
+      <div class="pb-0 mb-0">
+        {% block 404 %}{% endblock %}
+      </div>
+      {% endfor %}
+    </div>
+  </div>
+</div>
+{% endblock %}

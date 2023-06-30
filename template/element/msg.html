@@ -1,0 +1,15 @@
+{% block msg %}
+{% if messages %}
+{% for msg in messages %}
+<div class="msg-div" id="msg">
+  <div class="alert bg-primary">
+    <div class="icon__wrapper">
+      <span class="fa fa-bell"></span>
+    </div>
+    <p class="msg-p">{{msg}}</a></p>
+    <span class="fa fa-close msg-close ml-2"></span>
+  </div>
+</div>
+{% endfor %}
+{% endif %}
+{% endblock %}

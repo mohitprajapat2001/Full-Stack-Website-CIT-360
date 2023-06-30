@@ -1,0 +1,77 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block style %}
+<link rel="stylesheet" href="{% static 'style/about.css' %}">
+<link rel="stylesheet" href="{% static 'style/achievements.css' %}">
+{% endblock %}
+{% block title %}Achievement{% endblock %}
+{% block js %}
+<script src="{% static 'js/about.js' %}"></script>
+<script src="{% static 'js/accounts.js' %}"></script>
+<script src="{% static 'js/achievements.js' %}"></script>
+{% endblock %}
+{% block content %}
+
+<div class="section aboutus">
+    <div class="container mt-3">
+        <div class="row">
+            <div class="col-lg-12 col-md-12 text-center">
+                <div class="section-heading">
+                    <h6>academic excellence</h6>
+                    <h2>Student Achievements</h2>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="container-xl p-3">
+    <!-- Testimonial Section -->
+    <section class="testimonial-section">
+        <div class="large-container row">
+            <div class="col-lg-12 col-md-12 text-left">
+                <div class="section-heading">
+                    <h6 class="border-bottom border-dark mb-1">Student achievement</h6>
+                    <p>Student achievement has become a hot topic in education today, especially with increased
+                        accountability for classroom faculties. The ultimate goal for our institute is to improve the
+                        ability level and prepare students for industry. Student achievement and factors that impact
+                        progress are required to be acknowledged.
+                    </p>
+                </div>
+            </div>
+
+            <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel" data-interval="3000">
+                <ol class="carousel-indicators">
+                    {% for i in achievers_data %}
+                    {% if i.show %}
+                    <li {% if forloop.first %}class="active" {% endif %}></li>
+                    {% endif %}
+                    {% endfor %}
+                </ol>
+                <div class="carousel-inner">
+                    {% for i in achievers_data %}
+                    {% if i.show %}
+                    <div class="carousel-item {% if forloop.first %}active{% endif %}">
+                        <div class="testimonial-block">
+                            <div class="inner-box">
+                                <div class="text">{{i.description}}</div>
+                                <div class="info-box">
+                                    <div class="thumb"><img src="{{i.thumb.url}}" alt="">
+                                    </div>
+                                    <h4 class="name">{{i.name}}</h4>
+                                    <span class="designation">{{i.title}}</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    {% endif %}
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+    </section>
+</div>
+</section>
+<!--End Testimonial Section -->
+
+</div>
+{% endblock %}

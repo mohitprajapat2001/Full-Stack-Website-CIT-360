@@ -1,0 +1,35 @@
+{% block testimonial %}
+{% load static %}
+<div class="section testimonials">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-7">
+        <div class="owl-carousel owl-testimonials">
+          {% for i in alumani_data %}
+          {% if i.show %}
+          <!-- Start -->
+          <div class="item">
+            <p>“{{i.text}}”</p>
+            <div class="author">
+              <img src="{{i.images.url}}" alt="">
+              <span class="category">{{i.title}}</span>
+              <h4>{{i.name}}</h4>
+            </div>
+          </div>
+          <!-- End -->
+          {% endif %}
+          {% endfor %}
+        </div>
+      </div>
+      <div class="col-lg-5 align-self-center">
+        <div class="section-heading">
+          <h6>TESTIMONIALS</h6>
+          <h2>Alumni Speak ?</h2>
+          <p>Our alumni's inspiring words echo the transformative power of education, encouraging current students to
+            embrace opportunities and shape a brighter future</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}

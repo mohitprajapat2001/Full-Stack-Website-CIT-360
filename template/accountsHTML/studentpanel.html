@@ -1,0 +1,383 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block style %}
+<link rel="stylesheet" href="{% static 'style/panel.css' %}">
+<link rel="stylesheet" href="{% static 'style/about.css' %}">
+{% endblock %}
+
+{% block js %}
+<script src="{% static 'js/about.js' %}"></script>
+<script src="{% static 'js/panel.js' %}"></script>
+{% endblock %}
+
+{% block title %}Panel{% endblock %}
+
+{% block content %}
+<div class="section aboutus">
+	<div class="container mt-3">
+		<div class="row">
+			<div class="col-lg-12 col-md-12 text-center">
+				<div class="section-heading">
+					<h6>all you need one place</h6>
+					<h2>{{current_user.role}} Panel</h2>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+<div class="container-xl p-3">
+	<div class="row">
+		<div class="col-lg-4">
+			<div class="accordion" id="accordionExample">
+				<div class="accordion-item">
+					<h2 class="accordion-header text-center" id="headingOne">
+						<button class="accordion-button border-0 bg-transparent" type="button" data-bs-toggle="collapse"
+							data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+							Important Notice
+						</button>
+					</h2>
+					<div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne"
+						data-bs-parent="#accordionExample">
+						<div class="accordion-body scroll-accordion">
+							<!-- ----------- -->
+							<div class="container scroll-accordion-container-notice">
+								<ul>
+									{% for i in importantNotice_data %}
+									{% if i.show %}
+									<li>
+										<h5><code><a href="{{i.href}}">{{i.title}}</a></code></h5>
+									</li>
+									{% endif %}
+									{% endfor %}
+								</ul>
+							</div>
+							<!-- ------------ -->
+						</div>
+					</div>
+				</div>
+				<div class="accordion-item">
+					<h2 class="accordion-header text-center" id="headingTwo">
+						<button class="accordion-button collapsed border-0 bg-transparent" type="button"
+							data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false"
+							aria-controls="collapseTwo">
+							Top News
+						</button>
+					</h2>
+					<div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo"
+						data-bs-parent="#accordionExample">
+						<div class="accordion-body scroll-accordion">
+							<!-- Top News -->
+							<div class="container scroll-accordion-container-news">
+								<ul>
+									{% for i in topNews_data %}
+									{% if i.show %}
+									<li>
+										<h5><code><a href="{{i.href}}">{{i.title}}</a></code></h5>
+									</li>
+									{% endif %}
+									{% endfor %}
+								</ul>
+							</div>
+							<!--  -->
+						</div>
+					</div>
+				</div>
+				<div class="accordion-item">
+					<h2 class="accordion-header text-center" id="headingThree">
+						<button class="accordion-button collapsed border-0 bg-transparent" type="button"
+							data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false"
+							aria-controls="collapseThree">
+							CIT in Media
+						</button>
+					</h2>
+					<div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="headingThree"
+						data-bs-parent="#accordionExample">
+						<div class="accordion-body scroll-accordion">
+							<div class="container scroll-accordion-container-cit">
+								<ul>
+									{% for i in citinMedia_data %}
+									{% if i.show %}
+									<li>
+										<h5><code><a href="{{i.href}}">{{i.title}}</a></code></h5>
+									</li>
+									{% endif %}
+									{% endfor %}
+								</ul>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="accordion-item">
+					<h2 class="accordion-header text-center" id="headingFour">
+						<button class="accordion-button collapsed border-0 bg-transparent" type="button"
+							data-bs-toggle="collapse" data-bs-target="#collapseFour" aria-expanded="false"
+							aria-controls="collapseFour">
+							What We Offer?
+						</button>
+					</h2>
+					<div id="collapseFour" class="accordion-collapse collapse" aria-labelledby="headingFour"
+						data-bs-parent="#accordionExample">
+						<div class="accordion-body">
+							Our college offers <code>engineering courses, extensive sports facilities</code> and
+							maintains a strict
+							<code>no ragging policy</code> to provide a holistic and safe learning environment.
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="col-lg-8 my-5 my-lg-1">
+			<div class="container ">
+				<nav aria-label="breadcrumb ">
+					<ol class="breadcrumb ">
+						<li class="breadcrumb-item"><a href="/">Home</a></li>
+						<li class="breadcrumb-item active" aria-current="page">Student Panel</li>
+					</ol>
+				</nav>
+				<hr>
+				<div class="row mbr-justify-content-center">
+
+					<div class="col-lg-6 mbr-col-md-10 text-left">
+						<div class="wrap popup-element ">
+							<div class="ico-wrap">
+								<span class="mbr-iconfont fa fa-file-pdf"></span>
+							</div>
+							<div class="text-wrap text-left">
+								<a data-toggle="modal" data-target="#academicModal">
+									<h2 class="mbr-fonts-style mbr-bold mbr-section-title3 display-5">Academic
+										<span>Note</span>
+									</h2>
+									<p class="mbr-fonts-style text1 mbr-text display-6 text">Download Notes Here, Find
+										All Notes in One Place</p>
+								</a>
+							</div>
+						</div>
+					</div>
+					<div class="col-lg-6 mbr-col-md-10">
+						<div class="wrap">
+							<div class="ico-wrap">
+								<span class="mbr-iconfont bi bi-book "></span>
+							</div>
+							<div class="text-wrap vcenter">
+								<a href="https://btu.ac.in/home/SYLLABUS-FOR-UNDERGRADUATE-PROGRAMME2021-22146">
+									<h2 class="mbr-fonts-style mbr-bold mbr-section-title3 display-5">Academic
+										<span>Syallabus</span>
+									</h2>
+									<p class="mbr-fonts-style text1 mbr-text display-6">Download Syllabus, Click And
+										Download Syllabus For Semester</p>
+								</a>
+							</div>
+						</div>
+					</div>
+					<div class="col-lg-6 mbr-col-md-10">
+						<div class="wrap">
+							<div class="ico-wrap">
+								<span class="mbr-iconfont bi bi-calendar-range"></span>
+							</div>
+							<div class="text-wrap vcenter">
+								<a href="https://btu.ac.in/home/Notices--Orders79">
+									<h2 class="mbr-fonts-style mbr-bold mbr-section-title3 display-5">Examination
+										<span>Tab</span>
+									</h2>
+									<p class="mbr-fonts-style text1 mbr-text display-6">Click and Check Official
+										Examination Notice From University</p>
+								</a>
+							</div>
+						</div>
+					</div>
+					<div class="col-lg-6 mbr-col-md-10">
+						<div class="wrap">
+							<div class="ico-wrap">
+								<span class="mbr-iconfont fa fa-trophy"></span>
+							</div>
+							<div class="text-wrap vcenter">
+								<a href="/achievements">
+									<h2 class="mbr-fonts-style mbr-bold mbr-section-title3 display-5">Student
+										<span>Achievement</span>
+									</h2>
+									<p class="mbr-fonts-style text1 mbr-text display-6">Student achievement has become a
+										hot topic in education today, especially with increased accountability for
+										classroom faculties. </p>
+								</a>
+							</div>
+						</div>
+					</div>
+					<div class="col-lg-6 mbr-col-md-10">
+						<div class="wrap">
+							<div class="ico-wrap">
+								<span class="mbr-iconfont bi bi-ticket-perforated"></span>
+							</div>
+							<div class="text-wrap vcenter">
+								<a href="https://www.btu.ac.in/home/grievance" target="_blank">
+									<h2 class="mbr-fonts-style mbr-bold mbr-section-title3 display-5">Feedback
+										<span>Grievence</span>
+									</h2>
+									<p class="mbr-fonts-style text1 mbr-text display-6">Have any feedback or grievance?
+										Let us know!</p>
+								</a>
+							</div>
+						</div>
+					</div>
+					<div class="col-lg-6 mbr-col-md-10">
+						<div class="wrap">
+							<div class="ico-wrap">
+								<span class="mbr-iconfont bi bi-person-workspace"></span>
+							</div>
+							<div class="text-wrap vcenter">
+								<a href="/achievements">
+									<h2 class="mbr-fonts-style mbr-bold mbr-section-title3 display-5">Student
+										<span>Council</span>
+									</h2>
+									<p class="mbr-fonts-style text1 mbr-text display-6">Meet our dedicated student
+										council members.</p>
+								</a>
+							</div>
+						</div>
+					</div>
+
+					<div class="col-lg-6 mbr-col-md-10">
+						<div class="wrap">
+							<div class="ico-wrap">
+								<span class="mbr-iconfont bi bi-file-text"></span>
+							</div>
+							<div class="text-wrap vcenter">
+								<a href="/documentview/consolidated-marksheet">
+									<h2 class="mbr-fonts-style mbr-bold mbr-section-title3 display-5">Consolidation
+										<span>Marksheet</span>
+									</h2>
+									<p class="mbr-fonts-style text1 mbr-text display-6">To get your Consolidated Mark
+										sheet and Provisional Degree Certificate, please Click to View Documents list
+									</p>
+								</a>
+							</div>
+						</div>
+					</div>
+
+					<div class="col-lg-6 mbr-col-md-10">
+						<div class="wrap">
+							<div class="ico-wrap">
+								<span class="mbr-iconfont bi bi-files"></span>
+							</div>
+							<div class="text-wrap vcenter">
+								<a href="/documentview/duplicate-marksheet">
+									<h2 class="mbr-fonts-style mbr-bold mbr-section-title3 display-5">Duplicate
+										<span>Marksheet</span>
+									</h2>
+									<p class="mbr-fonts-style text1 mbr-text display-6">To get your Duplicate Mark sheet
+										please click to View Document list </p>
+								</a>
+							</div>
+						</div>
+					</div>
+
+					<div class="col-lg-6 mbr-col-md-10">
+						<div class="wrap">
+							<div class="ico-wrap">
+								<span class="mbr-iconfont fa fa-plane"></span>
+							</div>
+							<div class="text-wrap vcenter">
+								<a href="/documentview/migration-certificate">
+									<h2 class="mbr-fonts-style mbr-bold mbr-section-title3 display-5">Migration
+										<span>Certificate</span>
+									</h2>
+									<p class="mbr-fonts-style text1 mbr-text display-6">To get your Migration
+										Certificate please Click for Document list</p>
+								</a>
+							</div>
+						</div>
+					</div>
+
+					<div class="col-lg-6 mbr-col-md-10">
+						<div class="wrap">
+							<div class="ico-wrap">
+								<span class="mbr-iconfont fa fa-university"></span>
+							</div>
+							<div class="text-wrap vcenter">
+								<a href="/documentview/provisional-degree">
+									<h2 class="mbr-fonts-style mbr-bold mbr-section-title3 display-5">Provisional Degree
+										<span>Certificate</span>
+									</h2>
+									<p class="mbr-fonts-style text1 mbr-text display-6">To get your Provisional Degree
+										Certificate, Please Click to get List of Documents Required</p>
+								</a>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+</div>
+
+
+<!-- Modal -->
+<div class="modal fade" id="academicModal" tabindex="-1" role="dialog" aria-labelledby="academicModalLabel"
+	aria-hidden="true">
+	<div class="modal-dialog modal-lg" role="document">
+		<div class="modal-content">
+			<!-- Modal Header -->
+			<div class="modal-header">
+				<h5 class="modal-title" id="academicModalLabel">Academic Notes</h5>
+				<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+					<span aria-hidden="true">&times;</span>
+				</button>
+			</div>
+
+			<!-- Modal Body -->
+			<div class="modal-body">
+				<form id="myForm" method="get">
+					<div class="form-group">
+						<label for="fileType">Enter Branch</label>
+						<select class="form-control" id="course" name="course">
+							<option value="cse">Computer Science</option>
+							<option value="ee">Electrical</option>
+							<option value="me">Mechanical</option>
+							<option value="ce">Civil</option>
+							<option value="electronics">Electronics</option>
+						</select>
+					</div>
+					<div class="form-group">
+						<label for="semester">Semester:</label>
+						<select class="form-control" id="semester" name="semester">
+							<option value="1">Semester 1</option>
+							<option value="2">Semester 2</option>
+							<option value="3">Semester 3</option>
+							<option value="4">Semester 4</option>
+							<option value="5">Semester 5</option>
+							<option value="6">Semester 6</option>
+							<option value="7">Semester 7</option>
+							<option value="8">Semester 8</option>
+							<!-- Add more options for semesters as needed -->
+						</select>
+					</div>
+					<button type="submit" class="btn btn-primary" id="submitButton">Submit</button>
+				</form>
+				<table class="table">
+					<thead>
+						<tr>
+							<th scope="col">#</th>
+							<th scope="col">title</th>
+							<th scope="col">Subject</th>
+							<th scope="col">Semester</th>
+							<th scope="col">Download</th>
+						</tr>
+					</thead>
+					<div class="row container mt-3">
+						<input class="col-md-12 form-control" type="search" placeholder="Search Notes" aria-label="Search" id="notesearch">
+					</div>
+					<tbody id="notesTableBody">
+					</tbody>
+				</table>
+			</div>
+
+			<!-- Modal Footer -->
+			<div class="modal-footer">
+				<button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+			</div>
+		</div>
+	</div>
+</div>
+
+{% endblock %}

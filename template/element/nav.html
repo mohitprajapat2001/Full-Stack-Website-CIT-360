@@ -1,0 +1,94 @@
+{% block nav %}
+{% load static %}
+<header class="header-area header-sticky background-header">
+    <!--start code-->
+    <div class="row">
+        <div class="col-md-12  bg-dark">
+            <div class="row">
+                <!--Breaking box-->
+                <div class="col-md-2 col-lg-2">
+                    <div class="p-2 bg-primary text-white text-center breaking-caret"><span
+                            class="font-weight-bold">Latest News</span></div>
+                </div>
+                <!--end breaking box-->
+                <!--Breaking content-->
+                <div class="col-md-10 col-lg-10 pl-md-4 py-2">
+                    <div class="breaking-box">
+                        <div id="carouselbreaking" class="carousel slide" data-ride="carousel">
+                            <!--breaking news-->
+                            <div class="carousel-inner">
+                                {% for i in bannernews_data %}
+                                <!--post-->
+                                <div class="carousel-item {% if forloop.first %} active {% endif %}">
+                                    <a href="https://bootstrap.news/bootstrap-4-template-news-portal-magazine/"><span
+                                            class="position-relative mx-2 badge badge-primary rounded-0">{{i.category}}</span></a>
+                                    <a class="text-white" href="{{i.href}}">{{i.description}}</a>
+                                </div>
+                                <!--post-->
+                                {% endfor %}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!--end breaking content-->
+            </div>
+        </div>
+    </div>
+    <!--end code-->
+    <div class="container-xl p-2">
+        <div class="row">
+            <div class="col-12">
+                <nav class="main-nav">
+                    <!-- ***** Logo Start ***** -->
+                    <a class="logo" rel="home" href="/#">
+                        <!-- <h1>College</h1> -->
+                        <h1><img src="{% static 'img/logo-cit.png' %}" style="
+                            max-width: 160%;
+                            max-height: 130px;
+                            margin-top: -18px;
+                            display: block;" alt=""></h1>
+                    </a>
+                    <!-- ***** Logo End ***** -->
+                    <!-- ***** Serach Start ***** -->
+                    <!-- <div class="search-input">
+                        <form id="search" action="#">
+                            <input type="text" placeholder="Type Something" id='searchText' name="searchKeyword"
+                                onkeypress="handle" />
+                            <i class="fa fa-search"></i>
+                        </form>
+                    </div> -->
+                    <!-- ***** Serach Start ***** -->
+                    <!-- ***** Menu Start ***** -->
+                    <ul class="nav">
+                        <li class="scroll-to-section li-home"><a href="/#top" class="active">Home</a></li>
+                        <li class="scroll-to-section li-services"><a href="/#about">News</a></li>
+                        <li class="scroll-to-section li-courses"><a href="/#courses">Internship</a></li>
+                        <li class="scroll-to-section li-team"><a href="/#team">Faculty</a></li>
+                        <li class="scroll-to-section li-events"><a href="/#events">Seminars</a></li>
+                        <!-- <li class="scroll-to-section"><a href="#contact">Register Now!</a></li> -->
+                        {% if user.is_authenticated and current_user.role == 'faculty' %}
+                        <li class="scroll-to-section li-faculty"><a
+    current_user = student.objects.get(username=username)
+                                href="/panel/{{current_user.role}}">Teachers Panel</a></li>
+                        {% endif %}
+                        {% if user.is_authenticated and current_user.role == 'student' %}
+                        <li class="scroll-to-section li-student student-corner"><a
+                                href="/panel/{{current_user.role}}">Student Panel</a></li>
+                        {% endif %}
+                        {% if user.is_authenticated %}
+                        <li class="scroll-to-section li-accounts"><a
+                                href="/profile/{{user.username}}">{{current_user.name}}</a></li>
+                        {% else %}
+                        <li class="scroll-to-section li-accounts"><a href="/accounts">Register Now!</a></li>
+                        {% endif %}
+                    </ul>
+                    <a class='menu-trigger'>
+                        <span>Menu</span>
+                    </a>
+                    <!-- ***** Menu End ***** -->
+                </nav>
+            </div>
+        </div>
+    </div>
+</header>
+{% endblock %}

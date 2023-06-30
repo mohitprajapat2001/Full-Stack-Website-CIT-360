@@ -1,0 +1,80 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block style %}
+<link rel="stylesheet" href="{% static 'style/accounts.css' %}">
+{% endblock %}
+
+{% block js %}
+<script src="{% static 'js/accounts.js' %}"></script>
+{% endblock %}
+
+{% block content %}
+<div class="container form-signup-signin mt-5" id="container">
+	<div class="form-container sign-up-container mt-5">
+		<form action="/register" method="post" onsubmit="return validateForm()">
+			<h1 class="mt-3">Create Account</h1>
+			<span class="mt-3">Use your email for registration</span>
+			<div class="dropdown">
+				<span for="role" class="text-left font-weight-lighter text-muted mb-2 d-block">*Please select
+					Role</span>
+				<select name="role" id="roleSelect" required>
+					<option value="faculty">Faculty</option>
+					<option value="student" selected>Student</option>
+				</select>
+			</div>
+			<div class="dropdown">
+				<select name="course" id="courseSelect">
+					<option value="cse" selected>Computer Science</option>
+					<option value="ee">Electrical Engineering</option>
+					<option value="ce">Civil Engineering</option>
+					<option value="electronics">Electronics Engineering</option>
+					<option value="me">Mechanical Engineering</option>
+				</select>
+			</div>
+			<input type="text" placeholder="Name" name="full_name" id="register_name" required />
+			<input type="text" placeholder="Username" name="username" id="register_username" required />
+			<input type="email" placeholder="Email" name="email" id="register_email" required />
+			<input type="password" placeholder="Choose Password" name="password1" required />
+			<input type="password" placeholder="Confirm Password" name="password2"
+				pattern="^(?=.*[!@#$%^&*])(?=.*[A-Z]).{8,}$"
+				title="Password must contain at least one special character, one capital letter, and be at least 8 characters long"
+				required />
+			<div class="container"><span class="text-left font-weight-lighter text-muted mb-2 d-block"
+					for="role">*Password must contain at least one special character, one capital letter, and be at
+					least 8 characters long.</span></div>
+			<button>Sign Up</button>
+		</form>
+
+	</div>
+	<div class="form-container sign-in-container mt-5">
+		<form action="/login" method="post">
+			<h1>Sign in</h1>
+			<!-- <div class="social-container">
+				<a href="#" class="social"><i class="bi-facebook"></i></a>
+				<a href="#" class="social"><i class="bi-google"></i></a>
+				<a href="#" class="social"><i class="bi-linkedin"></i></a>
+			</div> -->
+			<span class="mt-5">use your account</span>
+			<input type="username" placeholder="username" name="login_username" />
+			<input type="password" placeholder="Password" name="login_password" />
+			<a href="#">Forgot your password?</a>
+			<button>Sign In</button>
+		</form>
+	</div>
+	<div class="overlay-container">
+		<div class="overlay">
+			<div class="overlay-panel overlay-left">
+				<h1>Welcome Back!</h1>
+				<p>To keep connected with us please login with your personal info</p>
+				<button class="ghost" id="signIn">Sign In</button>
+			</div>
+			<div class="overlay-panel overlay-right">
+				<h1>Hello, Friend!</h1>
+				<p>Enter your personal details and start journey with us</p>
+				<button class="ghost" id="signUp">Sign Up</button>
+			</div>
+		</div>
+	</div>
+</div>
+
+{% endblock %}

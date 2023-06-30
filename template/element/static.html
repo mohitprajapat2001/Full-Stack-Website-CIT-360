@@ -1,0 +1,60 @@
+{% block style %}
+{% load static %}
+<style>
+  /***** Nav Style Static *****/
+  .contact-us .contact-us-content::before {
+    background: url("{% static 'img/contact-dec-01.png' %}");
+    position: absolute;
+    left: 50%;
+    transform: translateX(-149px);
+    opacity: 0.5;
+    top: 0;
+    width: 318px;
+    height: 119px;
+    content: '';
+    z-index: 2;
+  }
+
+  /***** Contact Style Static *****/
+
+  .contact-us .contact-us-content::after {
+    background: url("{% static 'img/contact-dec-02.png' %}");
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    width: 183px;
+    height: 149px;
+    content: '';
+    z-index: -10;
+  }
+
+  /***** Funfact Style Static *****/
+
+  .fun-facts:after {
+    background: url('{% static "img/contact-dec-01.png" %}');
+    position: absolute;
+    left: 15%;
+    opacity: 0.5;
+    top: 0;
+    width: 318px;
+    height: 119px;
+    content: '';
+    z-index: -10;
+  }
+
+  /***** Footer Style Static *****/
+
+  footer::before {
+    background: url('{% static "img/contact-dec-01.png" %}');
+    position: absolute;
+    left: 30px;
+    transform: rotate(180deg);
+    opacity: 1;
+    bottom: 0;
+    width: 318px;
+    height: 119px;
+    content: '';
+    z-index: 2;
+  }
+</style>
+{% endblock %}

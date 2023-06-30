@@ -1,0 +1,385 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block style %}
+<link rel="stylesheet" href="{% static 'style/accounts.css' %}">
+{% endblock %}
+
+{% block js %}
+<script src="{% static 'js/accounts.js' %}"></script>
+{% endblock %}
+
+{% block title %}Profile{% endblock %}
+
+{% block content %}
+<section style="background-color: transparent;" class="my-5 mt-5 pt-5">
+  <div class="row">
+    <div class="col-lg-4">
+      <div class="card mb-4 p-3">
+        <div class="card-body text-center">
+          {% if current_user.profile_image %}
+          <img src="{{current_user.profile_image.url}}" alt="Edit Profile" class="rounded-circle img-fluid"
+            style="width: 150px;">
+          {% else %}
+          <img src="{% static 'img/profile/profile.png' %}" alt="Edit Profile" class="rounded-circle img-fluid"
+            style="width: 150px;">
+          {% endif %}
+          <h5 class="my-3 text-capitalize">{{current_user.name}}</h5>
+          <p class="text-muted mb-1 text-uppercase">{{current_user.role}}</p>
+          <p class="text-muted mb-4">{{current_user.course}}</p>
+          <div class="d-flex justify-content-center mb-2">
+            <button type="button" class="btn pmd-ripple-effect btn-primary pmd-btn-raised m-2"
+              data-target="#form-dialog" data-toggle="modal" class="btn pmd-ripple-effect btn-primary">Personal
+              Details</button>
+            {% if current_user.role == 'faculty' %}
+            <button type="button" class="btn pmd-ripple-effect btn-info pmd-btn-raised m-2" data-target="#faculty-edit"
+              data-toggle="modal">Faculty
+              Details</button>
+              {% endif %}
+            <a type="button" href="/logout" class="btn btn-outline-primary m-2">Logout</a>
+          </div>
+        </div>
+      </div>
+      <div class="card mb-lg-0 p-3">
+        <div class="card-body p-0">
+          <ul class="list-group list-group-flush rounded-3">
+            <li class="list-group-item d-flex justify-content-between align-items-center p-3">
+              <i class="fab fa-github fa-lg" style="color: #333333;"></i>
+              <a href="{{current_user.github}}" class="mb-0">{{current_user.github}}🔗</a>
+            </li>
+            <li class="list-group-item d-flex justify-content-between align-items-center p-3">
+              <i class="fab fa-twitter fa-lg" style="color: #55acee;"></i>
+              <a href="{{current_user.twitter}}" class="mb-0">{{current_user.twitter}}🔗</a>
+            </li>
+            <li class="list-group-item d-flex justify-content-between align-items-center p-3">
+              <i class="fab fa-instagram fa-lg" style="color: #ac2bac;"></i>
+              <a href="{{current_user.instagram}}" class="mb-0">{{current_user.instagram}}🔗</a>
+            </li>
+            <li class="list-group-item d-flex justify-content-between align-items-center p-3">
+              <i class="fab fa-facebook-f fa-lg" style="color: #3b5998;"></i>
+              <a href="{{current_user.facebook}}" class="mb-0">{{current_user.facebook}}🔗</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="col-lg-8">
+      <div class="card mb-4 p-3">
+        <div class="card-body">
+          <div class="row">
+            <div class="col-sm-3">
+              <p class="mb-0">Full Name</p>
+            </div>
+            <div class="col-sm-9">
+              <p class="text-muted mb-0">{{current_user.name}}</p>
+            </div>
+          </div>
+          <hr>
+          <div class="row">
+            <div class="col-sm-3">
+              <p class="mb-0">Email</p>
+            </div>
+            <div class="col-sm-9">
+              <p class="text-muted mb-0">{{current_user.email}}</p>
+            </div>
+          </div>
+          <hr>
+          <div class="row">
+            <div class="col-sm-3">
+              <p class="mb-0">Mobile</p>
+            </div>
+            <div class="col-sm-9">
+              <p class="text-muted mb-0">{{current_user.phone}}</p>
+            </div>
+          </div>
+          <hr>
+          <div class="row">
+            <div class="col-sm-3">
+              <p class="mb-0">Address</p>
+            </div>
+            <div class="col-sm-9">
+              <p class="text-muted mb-0">{{current_user.address}}</p>
+            </div>
+          </div>
+          <hr>
+          {% if current_user.role == 'faculty' %}
+          <div class="row">
+            <div class="col-sm-3">
+              <p class="mb-0">Faculty Role</p>
+            </div>
+            <div class="col-sm-9">
+              <p class="text-muted mb-0">{{facultydata.title}}</p>
+            </div>
+          </div>
+          <hr>
+          <div class="row">
+            <div class="col-sm-3">
+              <p class="mb-0">Role Description</p>
+            </div>
+            <div class="col-sm-9">
+              <p class="text-muted mb-0">{{facultydata.about}}</p>
+            </div>
+          </div>
+          <hr>
+          {% endif %}
+        </div>
+      </div>
+      {% if current_user.role == 'student' %}
+      <div class="row">
+        <div class="col-md-6">
+          <div class="card mb-4 mb-md-0 p-3">
+            <div class="card-body">
+              <p class="mb-4"><span class="text-primary font-italic">Academic</span> Data
+              </p>
+              <a href="https://btu.ac.in/home/SYLLABUS-FOR-UNDERGRADUATE-PROGRAMME2021-22146"
+                class="text-dark hover-6  font-weight-light">Scheme</a>
+              <hr>
+              <a href="https://btu.ac.in/home/SYLLABUS-FOR-UNDERGRADUATE-PROGRAMME2021-22146"
+                class="text-dark hover-6  font-weight-light">Syllabus</a>
+              <hr>
+              <a href="https://btu.ac.in/home/Notices--Orders79" class="text-dark hover-6  font-weight-light">University
+                Notice</a>
+              <hr>
+              <a href="#" class="text-dark hover-6  font-weight-light">Academic Calender</a>
+              <hr>
+              <a href="https://www.btu.ac.in/home/grievance" class="text-dark hover-6  font-weight-light">Feedback</a>
+              <hr>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-6">
+          <div class="card mb-md-0 p-3">
+            <div class="card-body">
+              <p class="mb-4"><span class="text-primary font-italic">University</span> Documents
+              </p>
+              <a href="/documentview/consolidated-marksheet" class="text-dark hover-6  font-weight-light">Consolidation
+                Marksheet</a>
+              <hr>
+              <a href="/documentview/migration-certificate" class="text-dark hover-6  font-weight-light">Migration
+                Certificate</a>
+              <hr>
+              <a href="/documentview/duplicate-marksheet" class="text-dark hover-6  font-weight-light">Duplicate
+                Certificate</a>
+              <hr>
+              <a href="/documentview/provisional-degree" class="text-dark hover-6  font-weight-light">Provisional Degree
+                Certificate</a>
+              <hr>
+            </div>
+          </div>
+        </div>
+      </div>
+      {% endif %}
+
+    </div>
+  </div>
+  </div>
+</section>
+
+
+<div tabindex="-1" class="modal pmd-modal fade" id="form-dialog" style="display: none;" aria-hidden="true">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+      <div class="modal-header pmd-modal-border">
+        <h2 class="modal-title">Edit Profile Now</h2>
+        <button aria-hidden="true" data-dismiss="modal" class="close" type="button">×</button>
+      </div>
+      <div class="modal-body">
+        <form class="container" method="post" action="/edituser/{{current_user.username}}"
+          enctype="multipart/form-data">
+          <div class="row gutters">
+            <div class="col-xl-3 col-lg-3 col-md-12 col-sm-12 col-12">
+              <div class="card h-100">
+                <div class="card-body">
+                  <div class="account-settings">
+                    <div class="user-avatar text-center">
+                      {% if current_user.profile_image %}
+                      <img src="{{current_user.profile_image.url}}" alt="Edit Profile" class="rounded-circle img-fluid"
+                        style="width: 150px;">
+                      {% else %}
+                      <img src="{% static 'img/profile/profile.png' %}" alt="Edit Profile"
+                        class="rounded-circle img-fluid" style="width: 150px;">
+                      {% endif %}
+                      <h5 class="username py-3">{{current_user.name}}</h5>
+                      <p class="useremail">{{current_user.username}}</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-xl-9 col-lg-9 col-md-12 col-sm-12 col-12">
+              <div class="card h-100">
+                <div class="card-body">
+                  <div class="row gutters">
+                    <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+                      <h6 class="mt-3 mb-2 text-primary">Upload Profile Image</h6>
+                    </div>
+                    <div class="form-group">
+                      <label for="profile_image"></label>
+                      <input type="file" class="form-control" name="profile_image" id="profile_image">
+                    </div>
+                    <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+                      <h6 class="mb-2 text-primary">Personal Details</h6>
+                    </div>
+                    <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
+                      <div class="form-group">
+                        <label for="fullName">Full Name</label>
+                        <input type="text" class="form-control" id="fullName" placeholder="Enter full name"
+                          name="fullname" value="{{current_user.name}}" />
+                      </div>
+                    </div>
+                    <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
+                      <div class="form-group">
+                        <label for="eMail">Email</label>
+                        <input type="email" class="form-control" id="eMail" placeholder="Enter email ID" name="email"
+                          value="{{current_user.email}}" disabled />
+                      </div>
+                    </div>
+                    <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
+                      <div class="form-group">
+                        <label for="phone">Phone<span class="text-danger">*</span></label>
+                        <input type="text" class="form-control" id="phone" placeholder="Enter phone number" name="phone"
+                          pattern="[0-9]{10}" value="{{current_user.phone}}" required />
+                      </div>
+                    </div>
+                    <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
+                      <div class="form-group">
+                        <label for="website">Address<span class="text-danger">*</span></label>
+                        <input type="address" class="form-control" id="website" placeholder="Enter Address"
+                          name="address" value="{{current_user.address}}" required />
+                      </div>
+                    </div>
+                  </div>
+                  <div class="row gutters">
+                    <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+                      <h6 class="mt-3 mb-2 text-primary">Personal Details</h6>
+                    </div>
+                    <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
+                      <div class="form-group">
+                        <label for="Street">Gender<span class="text-danger">*</span></label>
+                        <select name="gender" class="form-control" id="gender" required>
+                          <option value="M" {% if current_user.gender == 'M' %}selected{% endif %}>Male</option>
+                          <option value="F" {% if current_user.gender == 'F' %}selected{% endif %}>Female</option>
+                          <option value="O" {% if current_user.gender == 'O' %}selected{% endif %}>Other</option>
+                        </select>
+                      </div>
+                    </div>
+                    <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
+                      <div class="form-group">
+                        <label for="date_of_birth">Date of Birth<span class="text-danger">*</span></label>
+                        <input type="date" class="form-control" id="date_of_birth" placeholder="Enter City"  value="{{ current_user.date_of_birth|date:'Y-m-d' }}"  name="date_of_birth" required />
+                      </div>
+                    </div>
+                    <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
+                      <div class="form-group">
+                        <label for="course"><i class="fab fa-facebook-f"></i> Facebook</label>
+                        <input type="url" class="form-control" id="facebook" placeholder="Facebook Handle"
+                          name="facebook" />
+                      </div>
+                    </div>
+                    <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
+                      <div class="form-group">
+                        <label for="github"><i class="fab fa-github"></i> Github</label>
+                        <input type="url" class="form-control" id="github" placeholder="github Handle" name="github"/>
+                      </div>
+                    </div>
+                    <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
+                      <div class="form-group">
+                        <label for="twitter"><i class="fab fa-twitter"></i> Twitter</label>
+                        <input type="url" class="form-control" id="twitter" placeholder="twitter Handle"
+                          name="twitter" />
+                      </div>
+                    </div>
+                    <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
+                      <div class="form-group">
+                        <label for="Instagram"><i class="fab fa-instagram"></i> Instagram</label>
+                        <input type="url" class="form-control" id="Instagram" placeholder="Instagram Handle"
+                          name="instagram" />
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="modal-footer">
+            <button type="reset" value="reset" class="btn btn-dark">Reset</button>
+            <button type="submit" class="btn btn-primary">Submit</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+<div tabindex="-1" class="modal pmd-modal fade" id="faculty-edit" style="display: none;" aria-hidden="true">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+      <div class="modal-header pmd-modal-border">
+        <h2 class="modal-title">Edit Faculty Profile</h2>
+        <button aria-hidden="true" data-dismiss="modal" class="close" type="button">×</button>
+      </div>
+      <div class="modal-body">
+        <form class="container" method="post" action="/facultyedit/{{current_user.username}}"
+          enctype="multipart/form-data">
+          <div class="row gutters">
+            <div class="col-md-12 col-sm-12 col-12">
+              <div class="card h-100">
+                <div class="card-body">
+                  <div class="row gutters">
+                    <div class="col-md-12">
+                      <div class="form-group">
+                        <label for="title">Title Faculty<span class="text-danger">*</span></label>
+                        <select name="title" class="form-control" id="title" required>
+                          <option value="Head of Department" 
+                          {% if facultydata.title == 'Head of Department' %}selected{% endif %}>
+                          Head of Department</option>
+                          <option value="Assistant Professor" 
+                          {% if facultydata.title == 'Assistant Professor' %}selected{% endif %}>
+                          Assistant Professor</option>
+                          <option value="Accounts Department" 
+                          {% if facultydata.title == 'Accounts Department' %}selected{% endif %}>
+                          Accounts Department</option>
+                          <option value="Lab Supervisor" 
+                          {% if facultydata.title == 'Lab Supervisor' %}selected{% endif %}>
+                          Lab Supervisor</option>
+                          <option value="Lab Assistant" 
+                          {% if facultydata.title == 'Lab Assistant' %}selected{% endif %}>
+                          Lab Assistant</option>
+                          <option value="TPO" 
+                          {% if facultydata.title == 'TPO' %}selected{% endif %}>
+                          TPO</option>
+                          <option value="Admission Department" 
+                          {% if facultydata.title == 'Admission Department' %}selected{% endif %}>
+                          Admission Department</option>
+                        </select>
+                      </div>
+                    </div>
+                    <div class="col-md-12">
+                      <div class="form-group">
+                        <label for="eMail">Email</label>
+                        <input type="email" class="form-control" id="eMail" placeholder="Enter email ID" name="email"
+                          value="{{current_user.email}}" disabled />
+                      </div>
+                    </div>
+                    <div class="col-md-12">
+                      <div class="form-group">
+                        <label for="description">About<span class="text-danger">*</span></label>
+                        <textarea type="text" class="form-control" id="description" placeholder="Enter Profile Description" name="description" required>{{facultydata.about}}</textarea>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="modal-footer">
+            <button type="reset" value="reset" class="btn btn-dark">Reset</button>
+            <button type="submit" class="btn btn-primary">Submit</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}

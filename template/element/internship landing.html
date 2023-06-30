@@ -1,0 +1,137 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block style %}
+<link rel="stylesheet" href="{% static 'style/blogdetails.css' %}">
+{% endblock %}
+
+{% block js %}
+<script src="{% static 'js/internship.js' %}"></script>
+{% endblock %}
+
+{% block title %}Internship{% endblock %}
+
+{% block content %}
+<div class="section aboutus mb-0">
+  <div class="container mt-3">
+    <div class="row">
+      <div class="col-lg-12 col-md-12 text-center">
+        <div class="section-heading">
+          <h6>placement</h6>
+          <h2>Internship Data</h2>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+{% if data == 'all' %}
+<div class="container section courses mt-0">
+  <ul class="event_filter">
+    <li>
+      <a class="is_active p-2 rounded" href="#!" data-filter="*">Show All</a>
+    </li>
+    <li>
+      <a href="#!" class="p-2 rounded" data-filter=".cse">Computer Science</a>
+    </li>
+    <li>
+      <a href="#!" class="p-2 rounded" data-filter=".ce">Civil</a>
+    </li>
+    <li>
+      <a href="#!" class="p-2 rounded" data-filter=".me">Mechanical</a>
+    </li>
+    <li>
+      <a href="#!" class="p-2 rounded" data-filter=".ee">Electrical</a>
+    </li>
+    <li>
+      <a href="#!" class="p-2 rounded" data-filter=".electronics">Electronics</a>
+    </li>
+  </ul>
+  <div class="row event_box">
+    {% for i in internship_data %}
+    <!-- Internship Start -->
+    <div class="col-lg-4 col-md-6 align-self-center mb-30 event_outer col-md-6 {{i.field}}">
+      <div class="events_item">
+        <div class="thumb">
+          <a href="/internship/{{i.id}}">
+            <img src="{{i.jobimage.url}}" height="240px"></a>
+          <span class="category">{{i.field}}</span>
+          <span class="price">
+            <h6><em>$</em>{{i.stipend}}</h6>
+          </span>
+        </div>
+        <div class="down-content">
+          <span class="author">{{i.internshipcreator}}</span>
+          <h4>{{i.jobtitle}}</h4>
+        </div>
+      </div>
+    </div>
+    {% empty %}
+    {% include 'element/404.html' %}
+    {% block 404 %}{% endblock %}
+    <!-- Internship End -->
+    {% endfor %}
+  </div>
+</div>
+{% else %}
+<div class="container-xl p-3 mt-0">
+  <!-- Blog-details Section - Blog Details Page -->
+  <section id="blog-details" class="blog-details">
+    <div class="container" data-aos="fade-up" data-aos-delay="100">
+      <div class="row g-5">
+        <div class="col-lg-12">
+          <article class="article">
+            <div class="post-img">
+              <img src="{{internship_data.jobimage.url}}" alt="" class="img-fluid">
+            </div>
+            <h2 class="title">{{internship_data.jobtitle}}</h2>
+            <div class="meta-top">
+              <ul>
+                <li class="d-flex align-items-center"><i class="bi bi-person"></i> <a
+                    href="/#home">{{internship_data.internshipcreator}}</a></li>
+                <li class="d-flex align-items-center text-uppercase"><i class="bi bi-book"></i> <a href="/#home"><time
+                      datetime="2020-01-01">{{internship_data.field}}</time></a></li>
+              </ul>
+            </div><!-- End meta top -->
+            <div class="content">
+              <p>
+                {{internship_data.jobdescription}}
+              </p>
+            </div><!-- End post content -->
+            <div class="meta-bottom">
+              <i class="bi bi-building"></i>
+              <ul class="cats">
+                <li><a href="{{internship_data.url_internship}}" target="_blank">Apply Here</a></li>
+              </ul>
+
+              <i class="bi bi-cash"></i>
+              <ul class="tags">
+                <li><a>{{internship_data.stipend}}</a><i class="bi bi-currency-rupee"></i></li>
+              </ul>
+            </div><!-- End meta bottom -->
+          </article><!-- End post article -->
+          <div class="blog-author d-flex align-items-center">
+            {% if facultydata.images %}
+            <img src="{{facultydata.images.url}}" class="rounded-circle flex-shrink-0" alt="">
+            {% else %}
+            <img src="{% static 'img/user.png' %}" class="rounded-circle flex-shrink-0" alt="">
+            {% endif %}
+            <div>
+              <h4></h4>
+              <div class="social-links">
+                <a href="{{facultydata.link_twitter}}"><i class="bi bi-twitter"></i></a>
+                <a href="{{facultydata.link_facebook}}"><i class="bi bi-facebook"></i></a>
+                <a href="{{facultydata.link_instagram}}"><i class="biu bi-instagram"></i></a>
+              </div>
+              <p>
+                {{facultydata.about}}
+              </p>
+            </div>
+          </div><!-- End post author -->
+        </div>
+      </div>
+    </div>
+  </section><!-- End Blog-details Section -->
+</div>
+{% endif %}
+
+{% endblock %}

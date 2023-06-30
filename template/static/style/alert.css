@@ -1,0 +1,45 @@
+.msg-div {
+    position: fixed;
+    top: 20px;
+    left: 20px;
+    z-index: 9999;
+  }
+.alert {
+    height: 67px;
+    border-radius: 12px;
+    padding: 16px 22px 17px 20px;
+    display: flex;
+    align-items: center;
+    color: #fff;
+}
+.alert .icon__wrapper {
+    height: 34px;
+    width: 34px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.253);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.alert .icon__wrapper span {
+    font-size: 21px;
+    color: #fff;
+}
+.alert p {
+    color: #fff;
+    font-family: Verdana;
+    margin-left: 10px;
+}
+.alert p a, .alert p a:visited, .alert p a:active {
+    color: #fff;
+}
+
+.alert .msg-close {
+    color: #fff;
+    transition: transform 0.5s;
+    font-size: 18px;
+    cursor: pointer;
+}
+.alert .msg-close:hover {
+    transform: scale(1.5);
+}

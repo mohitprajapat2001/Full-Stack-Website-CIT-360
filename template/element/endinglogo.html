@@ -1,0 +1,95 @@
+{% block ending-logo %}
+{% load static %}
+<section id="client-slider" class="my-5">
+    <div class="section-heading text-center">
+        <h2>Chartered Institute of Technology</h2>
+        <h6>Our Recognitions.</h6>
+    </div>
+    <div class="container mt-5" id="recognition">
+        <div class="row owl-carousel">
+            <!-- Start -->
+            <div class="card">
+                <div class="card-img-top text-center mt-3">
+                    <img src="{% static '/img/logo/aicte.png' %}" class="img-fluid">
+                </div>
+                <div class="card-body">
+                    <p class="card-text text-center">Approved by <i>All India Council for Technical Education</i></p>
+                </div>
+            </div>
+            <!-- end -->
+            <!-- Start -->
+            <div class="card">
+                <div class="card-img-top text-center mt-3">
+                    <img src="{% static '/img/logo/iste.png' %}" class="img-fluid">
+                </div>
+                <div class="card-body">
+                    <p class="card-text text-center">Member of <i>India Society for Technical Education</i></p>
+                </div>
+            </div>
+            <!-- end -->
+            <!-- Start -->
+            <div class="card">
+                <div class="card-img-top text-center mt-3">
+                    <img src="{% static '/img/logo/iao.png' %}" class="img-fluid">
+                </div>
+                <div class="card-body">
+                    <p class="card-text text-center">Approved by <i>International Accredation Organization</i></p>
+                </div>
+            </div>
+            <!-- end -->
+            <!-- Start -->
+            <div class="card">
+                <div class="card-img-top text-center mt-3">
+                    <img src="{% static '/img/logo/rtu.png' %}" class="img-fluid">
+                </div>
+                <div class="card-body">
+                    <p class="card-text text-center">Affiliated to <i>Rajasthan Technical University</i></p>
+                </div>
+            </div>
+            <!-- end -->
+            <!-- Start -->
+            <div class="card">
+                <div class="card-img-top text-center mt-3">
+                    <img src="{% static '/img/logo/btu.png' %}" class="img-fluid">
+                </div>
+                <div class="card-body">
+                    <p class="card-text text-center">Affiliated to <i>Bikaner Technical University</i></p>
+                </div>
+            </div>
+            <!-- end -->
+
+        </div>
+    </div>
+</section>
+
+
+<div id="ourclients">
+    <div class="section-heading text-center">
+        <h2>PLACEMENT COMPANIES</h2>
+        <h6>These leading Companies are our Top Recruiters, and we’ll ensure that every last
+            student of our college gets hired.</h6>
+    </div>
+    <div class="clients-wrap mt-5 p-3">
+        <ul id="clientlogo" class="clearfix">
+            <li>
+                <img src="{% static 'img/logo/amazon.jpg' %}" alt="Logo">
+            </li>
+            <li>
+                <img src="{% static 'img/logo/icanix.jpg' %}" alt="Logo">
+            </li>
+            <li>
+                <img src="{% static 'img/logo/infosys.jpg' %}" alt="Logo">
+            </li>
+            <li>
+                <img src="{% static 'img/logo/juspay.jpg' %}" alt="Logo">
+            </li>
+            <li>
+                <img src="{% static 'img/logo/tata.jpg' %}" alt="Logo">
+            </li>
+            <li>
+                <img src="{% static 'img/logo/inoxwind.jpg' %}" alt="Logo">
+            </li>
+        </ul>
+    </div>
+</div>
+{% endblock %}
